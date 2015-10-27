@@ -5,7 +5,7 @@
 #include "c_praktika1.h"
 
 int schaltjahr(int jahr){
-    if(jahr%4==0 && jahr!=100 || jahr%400==0){
+    if( jahr%400==0 || jahr%4==0 && jahr%100!=0){
         printf("Das gewaehlte Jahr ist ein Schaltjahr");
     } else {
         printf("Das gewaehlte Jahr ist kein Schaltjahr");
@@ -14,7 +14,7 @@ int schaltjahr(int jahr){
 
 int jahresliste(int anfangsjahr, int endjahr){
     do{
-        if(anfangsjahr%4==0 && anfangsjahr!=100 || anfangsjahr%400==0){
+        if( anfangsjahr%400==0 || anfangsjahr%4==0 && anfangsjahr%100!=0){
             printf("%d",anfangsjahr);
             printf(": Ist ein Schaltjahr\n");
         } else {
