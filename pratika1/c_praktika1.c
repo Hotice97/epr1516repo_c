@@ -30,7 +30,7 @@ int main(){
     int eingabe;
     int eingabe2;
 
-    printf("Gib ein Jahr deiner Wahl ein: ");
+    printf("Gib ein Jahr zum Prüfen ein: ");
     scanf("%d",&eingabe);
 
     schaltjahr(eingabe);
