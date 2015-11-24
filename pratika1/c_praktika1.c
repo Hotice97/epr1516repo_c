@@ -4,17 +4,34 @@
 
 #include "c_praktika1.h"
 
-int schaltjahr(int jahr){
-    if( jahr%400==0 || (jahr%4==0 && jahr%100!=0) ){
+int schaltjahr(){
+
+    int eingabe;
+    int eingabe2;
+    printf("\nGib ein Jahr deiner Wahl ein: ");
+    scanf("%d",&eingabe);
+    int jahr= eingabe;
+
+    if( jahr%400==0 || jahr%4==0 && jahr%100!=0){
         printf("Das gewaehlte Jahr ist ein Schaltjahr");
     } else {
         printf("Das gewaehlte Jahr ist kein Schaltjahr");
     }
 }
 
-int jahresliste(int anfangsjahr, int endjahr){
+int jahresliste(){
+
+    int eingabe;
+    int eingabe2;
+    printf("\nGib das Anfangsjahr ein: ");
+    scanf("%d",&eingabe);
+    printf("Gib das Endjahr ein: ");
+    scanf("%d",&eingabe2);
+    int anfangsjahr = eingabe;
+    int endjahr = eingabe2;
+
     do{
-        if( anfangsjahr%400==0 || (anfangsjahr%4==0 && anfangsjahr%100!=0) ){
+        if( anfangsjahr%400==0 || anfangsjahr%4==0 && anfangsjahr%100!=0){
             printf("%d",anfangsjahr);
             printf(": Ist ein Schaltjahr\n");
         } else {
@@ -26,20 +43,30 @@ int jahresliste(int anfangsjahr, int endjahr){
     return 0;
 }
 
-int main(){
-    int eingabe;
-    int eingabe2;
+int binarytodecimal(){
 
-    printf("Gib ein Jahr zum Prüfen ein: ");
-    scanf("%d",&eingabe);
-
-    schaltjahr(eingabe);
-
-    printf("\nGib das Anfangsjahr ein: ");
-    scanf("%d",&eingabe);
-    printf("Gib das Endjahr ein: ");
-    scanf("%d",&eingabe2);
-
-    jahresliste(eingabe,eingabe2);
+    long int decimalNumber,rest,quotient;
+    int binaryNumber[100],i=1,j;
+    printf("Enter any decimal number: ");
+    scanf("%ld",&decimalNumber);
+    quotient = decimalNumber;
+    while(quotient!=0){
+        binaryNumber[i++]= quotient % 2;
+        quotient = quotient / 2;
+    }
+    printf("Als binaere Zahl %d: ",decimalNumber);
+    for(j = i-1 ;j > 0; j--){
+        printf("%d",binaryNumber[j]);
+    }
     return 0;
+}
+
+
+int main(){
+
+    binarytodecimal();
+    schaltjahr();
+    jahresliste();
+
+
 }
