@@ -58,23 +58,9 @@ int printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsfak
     do {
         ergebnis = 0;
         ergebnis = euro2dollar(anfangswert, umrechnungsfaktor);
-
-        if(anzahlZiffern(anfangswert)<anzahlZiffern(endwert)){
-            for(int i = anzahlZiffern(anfangswert);i<anzahlZiffern(endwert);i++){
-                printf(" ");
-            }
-
-        }
-        printf("%f", anfangswert);
+        printf("%12.5f", anfangswert);
         printf(" | ");
-
-        if(anzahlZiffern(euro2dollar(anfangswert,umrechnungsfaktor))<anzahlZiffern(endwert)){
-            for(int i = anzahlZiffern(euro2dollar(anfangswert,umrechnungsfaktor));i<anzahlZiffern(endwert);i++){
-                printf(" ");
-            }
-
-        }
-        printf("%f \n", ergebnis);
+        printf("%12.5f \n", ergebnis);
         anfangswert = anfangswert + schrittgroesse;
 
     }while (anfangswert <= endwert);
@@ -93,24 +79,9 @@ int printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsfak
 
         ergebnis = 0;
         ergebnis = dollar2euro(anfangswert, umrechnungsfaktor);
-
-
-        if(anzahlZiffern(anfangswert)<anzahlZiffern(endwert)){
-            for(int i = anzahlZiffern(anfangswert);i<anzahlZiffern(endwert);i++){
-                printf(" ");
-            }
-
-        }
-        printf("%f", anfangswert);
+        printf("%12.5f", anfangswert);
         printf(" | ");
-
-        if(anzahlZiffern(euro2dollar(anfangswert,umrechnungsfaktor))<anzahlZiffern(endwert)) {
-            for (int i = anzahlZiffern(dollar2euro(anfangswert, umrechnungsfaktor)); i < anzahlZiffern(dollar2euro(endwert,umrechnungsfaktor)); i++) {
-                printf(" ");
-            }
-
-        }
-        printf("%f \n", ergebnis);
+        printf("%12.5f \n", ergebnis);
         anfangswert = anfangswert + schrittgroesse;
 
     }while (anfangswert <= endwert);
@@ -194,11 +165,15 @@ bool checkDate(int tag, int monat, int jahr){
 
 int main() {
 
+
+
     //Aufgabe 1
     float eurobetrag = 0;
     float dollarbetrag = 0;
     float umrechnungsfaktor = 1.3810095;
 
+    printf("%f \n",euro2dollar(0.2,umrechnungsfaktor));
+    printf("%f \n",euro2dollar(100.2,umrechnungsfaktor));
 
     printf("Gib den in Dollar umzurechnenden Betrag ein: ");
     scanf("%f", &eurobetrag);
