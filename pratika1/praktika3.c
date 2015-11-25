@@ -2,7 +2,6 @@
 // Created by Tobias Grothusmann on 11.11.15.
 //
 #include <stdio.h>
-#include <jconfig.h>
 #include <stdbool.h>
 
 float euro2dollar(float betrag, float umrechnungsfaktor) {
@@ -48,9 +47,8 @@ float printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsf
     float ergebnis = 0;
 
     printf("Euro       |     Dollar\n");
-    printf("-----------+-----------\n");
-    while (anfangswert <= endwert) {
-
+    printf("-----------+------------\n");
+    do {
         ergebnis = 0;
         ergebnis = euro2dollar(anfangswert, umrechnungsfaktor);
         printf("%f", anfangswert);
@@ -58,7 +56,7 @@ float printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsf
         printf("%f \n", ergebnis);
         anfangswert = anfangswert + schrittgroesse;
 
-    }
+    }while (anfangswert <= endwert);
 
 }
 
@@ -69,7 +67,7 @@ float printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsf
 
     printf("Dollar     |       Euro\n");
     printf("-----------+-----------\n");
-    while (anfangswert <= endwert) {
+    do{
 
         ergebnis = 0;
         ergebnis = dollar2euro(anfangswert, umrechnungsfaktor);
@@ -78,11 +76,11 @@ float printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsf
         printf("%f \n", ergebnis);
         anfangswert = anfangswert + schrittgroesse;
 
-    }
+    }while (anfangswert <= endwert);
 
 }
 
-boolean schaltjahr(int jahr){
+bool schaltjahr(int jahr){
 
     if( jahr%400==0 || jahr%4==0 && jahr%100!=0){
         return true;
@@ -111,7 +109,7 @@ int tageImMonat(int monat,int jahr) {
     }
 }
 
-boolean checkDate(int tag, int monat, int jahr){
+bool checkDate(int tag, int monat, int jahr){
     //Monat korrekt?
     if(monat > 12 || monat<1){
         return false;
@@ -181,12 +179,16 @@ int main() {
     while(eingabe>eingabe1){
         printf("Der Anfangbetrag ist größer als der Endbetrag! Wiederhole die Eingabe! \n");
         printf("Geben sie den Anfangsbetrag (in Euro) ein: ");
-        scanf("%d", &eingabe);
+        scanf("%f", &eingabe);
         printf("Geben sie den Endbetrag (in Euro) ein: ");
-        scanf("%d", &eingabe1);
+        scanf("%f", &eingabe1);
     }
     printf("Geben sie die Schrittgroeße ein: ");
     scanf("%f", &eingabe2);
+    while(eingabe2 < 0){
+        printf("Die Schrittgroeße darf nicht negativ sein! Wiederhole die Eingabe: ");
+        scanf("%f", &eingabe2);
+    }
 
     printTableEuro2Dollar(eingabe,eingabe1,umrechnungsfaktor,eingabe2);
 
@@ -196,19 +198,23 @@ int main() {
     eingabe1 = 0;
     eingabe2 = 0;
     printf("Geben sie den Anfangsbetrag (in Dollar) ein: ");
-    scanf("%d", &eingabe);
+    scanf("%f", &eingabe);
     printf("Geben sie den Endbetrag (in Dollar) ein: ");
-    scanf("%d", &eingabe1);
+    scanf("%f", &eingabe1);
     while(eingabe>eingabe1){
         printf("Der Anfangbetrag ist größer als der Endbetrag! Wiederhole die Eingabe! \n");
         printf("Geben sie den Anfangsbetrag (in Dollar) ein: ");
-        scanf("%d", &eingabe);
+        scanf("%f", &eingabe);
         printf("Geben sie den Endbetrag (in Dollar) ein: ");
-        scanf("%d", &eingabe1);
+        scanf("%f", &eingabe1);
     }
 
     printf("Geben sie die Schrittgroeße ein: ");
-    scanf("%d", &eingabe2);
+    scanf("%f", &eingabe2);
+    while(eingabe2 < 0){
+        printf("Die Schrittgroeße darf nicht negativ sein! Wiederhole die Eingabe: ");
+        scanf("%f", &eingabe2);
+    }
 
     printTableDollar2Euro(eingabe,eingabe1,umrechnungsfaktor,eingabe2);
 
@@ -238,7 +244,6 @@ int main() {
     } else{
         printf("Das eingebene Datum ist nicht korrekt");
     }
-
 
     return 0;
 }

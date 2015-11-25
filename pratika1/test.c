@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-int produkt(int zahl1,int zahl2){
+unsigned long produkt(unsigned int zahl1,unsigned int zahl2){
     unsigned int i = 0;
     unsigned long produkt = 1;
     for(i=zahl1;i<=zahl2;i++){
