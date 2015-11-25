@@ -3,6 +3,8 @@
 //
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <math.h>
 
 float euro2dollar(float betrag, float umrechnungsfaktor) {
 
@@ -40,6 +42,11 @@ float dollar2euro1(float betrag, float umrechnungsfaktor) {
 
 }
 
+float anzahlZiffern(float zahl){
+    float ergebnis = floor (log10 (abs (zahl))) + 1;
+    return ergebnis;
+}
+
 
 
 float printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsfaktor, float schrittgroesse) {
@@ -51,8 +58,22 @@ float printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsf
     do {
         ergebnis = 0;
         ergebnis = euro2dollar(anfangswert, umrechnungsfaktor);
+
+        if(anzahlZiffern(anfangswert)<anzahlZiffern(endwert)){
+            for(int i = anzahlZiffern(anfangswert);i<anzahlZiffern(endwert);i++){
+                printf(" ");
+            }
+
+        }
         printf("%f", anfangswert);
         printf(" | ");
+
+        if(anzahlZiffern(euro2dollar(anfangswert,umrechnungsfaktor))<anzahlZiffern(endwert)){
+            for(int i = anzahlZiffern(euro2dollar(anfangswert,umrechnungsfaktor));i<anzahlZiffern(endwert);i++){
+                printf(" ");
+            }
+
+        }
         printf("%f \n", ergebnis);
         anfangswert = anfangswert + schrittgroesse;
 
@@ -71,14 +92,31 @@ float printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsf
 
         ergebnis = 0;
         ergebnis = dollar2euro(anfangswert, umrechnungsfaktor);
+
+
+        if(anzahlZiffern(anfangswert)<anzahlZiffern(endwert)){
+            for(int i = anzahlZiffern(anfangswert);i<anzahlZiffern(endwert);i++){
+                printf(" ");
+            }
+
+        }
         printf("%f", anfangswert);
         printf(" | ");
+
+        if(anzahlZiffern(euro2dollar(anfangswert,umrechnungsfaktor))<anzahlZiffern(endwert)) {
+            for (int i = anzahlZiffern(dollar2euro(anfangswert, umrechnungsfaktor)); i < anzahlZiffern(dollar2euro(endwert,umrechnungsfaktor)); i++) {
+                printf(" ");
+            }
+
+        }
         printf("%f \n", ergebnis);
         anfangswert = anfangswert + schrittgroesse;
 
     }while (anfangswert <= endwert);
 
 }
+
+
 
 bool schaltjahr(int jahr){
 
@@ -153,6 +191,9 @@ bool checkDate(int tag, int monat, int jahr){
 
 
 int main() {
+
+
+   printf("%f", anzahlZiffern(100));
     //Aufgabe 1
     float eurobetrag = 0;
     float dollarbetrag = 0;
