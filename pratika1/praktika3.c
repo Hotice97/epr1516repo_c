@@ -49,7 +49,7 @@ float anzahlZiffern(float zahl){
 
 
 
-float printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsfaktor, float schrittgroesse) {
+int printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsfaktor, float schrittgroesse) {
 
     float ergebnis = 0;
 
@@ -79,10 +79,11 @@ float printTableEuro2Dollar(float anfangswert, float endwert, float umrechnungsf
 
     }while (anfangswert <= endwert);
 
+    return 0;
 }
 
 
-float printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsfaktor, float schrittgroesse) {
+int printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsfaktor, float schrittgroesse) {
 
     float ergebnis = 0;
 
@@ -114,6 +115,7 @@ float printTableDollar2Euro(float anfangswert, float endwert, float umrechnungsf
 
     }while (anfangswert <= endwert);
 
+    return 0;
 }
 
 
@@ -192,8 +194,6 @@ bool checkDate(int tag, int monat, int jahr){
 
 int main() {
 
-
-   printf("%f", anzahlZiffern(100));
     //Aufgabe 1
     float eurobetrag = 0;
     float dollarbetrag = 0;
