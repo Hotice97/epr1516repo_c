@@ -258,9 +258,10 @@ int main() {
     if(checkDate(tag,monat,jahr)){
         printf("Das eingebene Datum ist korrekt");
     } else{
-        printf("Das eingebene Datum ist nicht korrekt \n");
+
     }
     while(checkDate(tag,monat,jahr)==false){
+        printf("Das eingebene Datum ist nicht korrekt \n");
         monat = 0;
         int tag = 0;
         jahr = 0;
