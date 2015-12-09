@@ -4,15 +4,17 @@
 #include <stdio.h>
 int main(void) {
 
-    printf("Beachte bei der Eingabe, dass beide Matrizen gleich groß sind, d.h. gleich Anzahl an Spalten und Zeilen haben! Ansonsten können diese nicht addiert werden \n\n");
+    printf("Beachte bei der Eingabe, dass beide Matrizen gleich groï¿½ sind, d.h. gleich Anzahl an Spalten und Zeilen haben! Ansonsten kï¿½nnen diese nicht addiert werden \n\n");
 
     //Matrix A
     unsigned int spalten1,zeilen1;
+    int eintraege1,eintraege2;
     float eingabe1 = 0;
     printf("Gib die Anzahl der Spalten ein: ");
     scanf("%d", &spalten1);
     printf("Gib die Anzahl der Zeilen ein: ");
     scanf("%d", &zeilen1);
+    eintraege1 = spalten1 * zeilen1;
 
     float matrix_a[zeilen1*spalten1];
 
@@ -42,6 +44,7 @@ int main(void) {
     scanf("%d", &spalten2);
     printf("Gib die Anzahl der Zeilen ein: ");
     scanf("%d", &zeilen2);
+    eintraege2 = spalten2 * zeilen2;
 
     float matrix_b[zeilen2*spalten2];
 
@@ -61,6 +64,11 @@ int main(void) {
             printf("\n");
         }
 
+    }
+
+    if(eintraege1!=eintraege2){
+        printf("Die eingegebenen Matrizen konnten nicht addiert werden, sie sind nicht gleich gross");
+        return 0;
     }
 
     int e = 0;
