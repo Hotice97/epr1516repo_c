@@ -3,6 +3,7 @@
 //
 #include <stdio.h>
 #include <stdbool.h>
+#include <memory.h>
 
 int anzeigen(int martikelnummern[], int arraylength){
     for(int i = 0; i < arraylength;i++){
@@ -34,27 +35,19 @@ int suchen(int maritkelnummer[], int value, int arraylength){
     }
 }
 
-bool vorhanden(int maritkelnummer[], int value, int arraylength){
-
-    int index;
-    index = finde_index(maritkelnummer, arraylength, value);
-    if (index == -1) {
-        false;
-    } else {
-        true;
-    }
-}
-
 int hinzufuegen(int martikelnummern[],int stelle, int value){
-
     martikelnummern[stelle] = value;
 }
 
-int loeschen(int marikelnummern[],int position,int n){
-//    for(int i = position+1; i < n;i++){
-//        marikelnummern[i - 1] = marikelnummern[i];
-//    }
-//    n++;
+int loeschen(int marikelnummern[],int position,int arraylength){
+
+    for(int i = position+1; i < arraylength;i++){
+        marikelnummern[i - 1] = marikelnummern[i];
+    }
+
+    marikelnummern[arraylength-1] = 0;
+
+
 }
 
 
@@ -66,7 +59,12 @@ int main(void) {
     int arraylength = eingabe4 ;
     int arraystelle = 0;
 
+//    int martikelnummern[arraylength];
+
     int martikelnummern[arraylength];
+    for(int z =0;z<arraylength;z++){
+        martikelnummern[z] = 0;
+    }
 
 
     while(true) {
@@ -88,7 +86,7 @@ int main(void) {
             case 3:eingabe5 = 0;
                 printf("Welche Martikelnummer moechten sie hinzufuegen? ");
                 scanf("%d",&eingabe5);
-                if(!vorhanden(martikelnummern,eingabe5,arraylength)){
+                if(finde_index(martikelnummern,arraylength, eingabe5)==-1){
                     if(arraystelle<arraylength){
                         hinzufuegen(martikelnummern, arraystelle, eingabe5);
                         arraystelle++;
