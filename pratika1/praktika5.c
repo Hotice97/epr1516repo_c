@@ -22,6 +22,11 @@ int isPalindrom(char *eins, char *zwei){
     printf("The reverse of the string is %s.\n", zwei);
 }
 
+char removeNonLetters(char *eins){
+
+
+}
+
 int main() {
 
     char two[200];
@@ -29,6 +34,9 @@ int main() {
     printf("Gib das zu prüfende Wort ein! \n");
     scanf( "%s" , one );
 
+    *one = removeNonLetters(one);
+
+    printf("Refactor %s\n", one);
 
     if(isPalindrom(one,two)==1){
         printf("Das eingegebene Wort %s ist ein Palindrom.\n", one);
