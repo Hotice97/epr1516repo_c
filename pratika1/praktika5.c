@@ -8,11 +8,18 @@
 
 int isPalindrom(char *eins, char *zwei){
 
-    printf("Hallo! %s\n",eins);
+    strcpy(zwei, eins);
+    strrev(zwei);
 
+    if(strcmp(eins, zwei) == 0){
+        return 1;
+        printf("The entered string %s is a palindrome.\n", eins);
+    } else{
+        return 2;
+        printf("The entered string %s is not a palindrome.\n", eins);
+    }
 
-
-
+    printf("The reverse of the string is %s.\n", zwei);
 }
 
 int main() {
@@ -24,12 +31,12 @@ int main() {
 
 
     if(isPalindrom(one,two)==1){
-        printf("The entered string %s is a palindrome.\n", one);
+        printf("Das eingegebene Wort %s ist ein Palindrom.\n", one);
     } else{
-        printf("The entered string %s is not a palindrome.\n", one);
+        printf("Das eingegebene Wort %s ist kein Palindrom.\n", one);
     }
 
-    strrev(two);
-    printf("The reverse of the string is %s.\n", two);
+
+
     return 0;
 }
