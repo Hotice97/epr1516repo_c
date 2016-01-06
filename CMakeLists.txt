@@ -6,5 +6,5 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 
 #set(SOURCE_FILES main.cpp)
 #set(SOURCE_FILES pratika1/praktikas3.c)
-set(SOURCE_FILES pratika1/martikelnummern.c)
+set(SOURCE_FILES pratika1/praktika5.c)
 add_executable(epr1516repo_c ${SOURCE_FILES})
