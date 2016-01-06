@@ -5,46 +5,100 @@
 #include "praktika5.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
-int isPalindrom(char *eins, char *zwei){
 
-    strcpy(zwei, eins);
-    strrev(zwei);
+int isPalindrom(char *palin){
 
-    if(strcmp(eins, zwei) == 0){
-        return 1;
-        printf("The entered string %s is a palindrome.\n", eins);
-    } else{
-        return 2;
-        printf("The entered string %s is not a palindrome.\n", eins);
+  int start,mitte,ende,laenge = strlen(palin);
+    ende = laenge - 1; // \0 raus nehemen
+    mitte = laenge /2 ;
+
+    for (start = 0; start < mitte; start ++){
+        if(palin[start] != palin[ende]){
+            return 0;
+        }
+        ende --;
     }
 
-    printf("The reverse of the string is %s.\n", zwei);
+    if(start == mitte){
+        return 1;
+    }
+
 }
 
-char removeNonLetters(char *eins){
+void removeNonLetters(char *palin){
 
+    int i;
+    for(i = 0;palin[i] != '\0'; i++){
+        if(palin[i] < 65 || palin[i] > 90){
+           if(palin[i] < 97 || palin[i] > 122){
+
+               for(int j = i; j < strlen(palin); j ++){
+                  palin[j] = palin[j+1];
+               }
+                                        i--;
+           }
+
+        }
+    }
+
+
+}
+
+void tolower(char *palin){
+
+    int i;
+    for(i =0;palin[i] != '\0'; i++){
+
+        if(palin[i] >= 65 && palin[i] <=90){ //if upper case
+            palin[i] |= 32; //add 32 to get lower case
+        }
+
+    }
 
 }
 
 int main() {
 
-    char two[200];
     char one[200];
-    printf("Gib das zu prüfende Wort ein! \n");
-    scanf( "%s" , one );
 
-    *one = removeNonLetters(one);
+    while (true) {
 
-    printf("Refactor %s\n", one);
+        printf("Gib das zu prï¿½fende Wort ein! \n");
+        scanf("%s", one);
 
-    if(isPalindrom(one,two)==1){
-        printf("Das eingegebene Wort %s ist ein Palindrom.\n", one);
-    } else{
-        printf("Das eingegebene Wort %s ist kein Palindrom.\n", one);
+        printf("Original: %s\n", one);
+
+        if (isPalindrom(one) == 1) {
+            printf("Palindrom: %s\n", one);
+        } else {
+            printf("kein Palindrom: %s\n", one);
+        }
+
+        removeNonLetters(one);
+
+        printf("nach removeLetters: %s\n", one);
+
+        if (isPalindrom(one) == 1){
+            printf("Palindrom: %s\n", one);
+        } else {
+            printf("kein Palindrom %s\n", one);
+        }
+
+        tolower(one);
+
+        printf("nach toLower: %s\n", one);
+
+        if (isPalindrom(one) == 1){
+            printf("Palindrom: %s\n",one);
+        } else {
+            printf("kein Palindrom %s\n", one);
+        }
+
+        printf("*************************\n");
+
     }
-
-
 
     return 0;
 }

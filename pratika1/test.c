@@ -3,22 +3,31 @@
 //
 
 #include <stdio.h>
-unsigned long produkt(unsigned int zahl1,unsigned int zahl2){
-    unsigned int i = 0;
-    unsigned long produkt = 1;
-    for(i=zahl1;i<=zahl2;i++){
-        produkt *= i;
-    }
-    return produkt;
-}
 
-main(void){
-    unsigned int zahl1,zahl2;
 
-    printf("Zah1= ");
-    scanf("%u",&zahl1);
-    printf("Zah2= ");
-    scanf("%u",&zahl2);
+char string[]="Ich mag EPR";
 
-    printf("Produkt aller Zahlen zwischen %u und %u = %u\n",zahl1,zahl2,produkt(zahl1,zahl2));
+int main(){
+
+    char* char_ptr1 = string + 4;
+
+    char* char_ptr2 = string + 8;
+
+
+    printf("%c lsmöajmsa\n",*string);
+
+    printf("\n%s", string);
+    printf("\n%s", char_ptr1);
+    printf("\n%c", (*string + 2));
+
+    printf("\n%s", char_ptr2);
+    printf("\n%c", *(char_ptr1++));
+    printf("\n%s", ++char_ptr1);
+
+    printf("\n%d",string);
+    printf("\n%d",char_ptr2);
+
+    printf("\n%d", string < char_ptr2);
+
+    return 0;
 }
