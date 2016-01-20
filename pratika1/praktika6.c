@@ -33,7 +33,7 @@ studierende *datenEinlesen() {
     printf("Name eingeben: \n");
     fgets(puff,MAX0,stdin);                             //liest einen string ein und speichert in puffer
     neu->name = (char*) malloc((MAX0)*sizeof(char));   //weist name dynamischen speicher zu mit MAX0 mal größe von char
-    strncpy(neu->name,puff,MAX0);                      //kopiert name nach puffer
+    strncpy(neu->name,puff,MAX0); //kopiert name nach puffer
     printf("Matrikelnummer eingeben: \n");
     scanf("%d", &neu->matrikelNummer);
 
@@ -142,7 +142,6 @@ int main() {
     int i,j; //zaehlvariablen
     int auswahl; //switch variable
 
-    int numeric = 0;
 
     printf("Geben Sie die Anzahl der hinzuzufügenden Studenten ein: \n");
     scanf("%d",&zahl);
@@ -158,7 +157,7 @@ int main() {
     do{
         printf("1.Alle Einträge anzeigen   " "2.Student hinzufügen   "
                        "3.Suche nach Nummer   " "4.Suche nach Name   "
-                       "5.Löschen   " "6.SortierenNachName   " "0.Beenden   ");
+                       "5.Löschen   " "6.SortierenNachName   " "0.Beenden   \n");
         scanf("%d",&auswahl);
 
         switch(auswahl){
