@@ -26,8 +26,8 @@ int isPalindrom(char *palin){
     }
 
 }
-
 void removeNonLetters(char *palin){
+
 
     int i;
     for(i = 0;palin[i] != '\0'; i++){
