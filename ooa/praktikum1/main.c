@@ -18,14 +18,14 @@ void testtreiber(){
     priorityqueue_t *pq = NULL;
 
     pq = pqueue_create();
-    printf("\nNoch kein Element eingefügt\n");
+    printf("\nNoch kein Element eingefÃ¼gt\n");
     printentry(pq);
 
-    printf("\nnachdem ein element eingefügt worden ist:\n");
+    printf("\nnachdem ein element eingefÃ¼gt worden ist:\n");
     pqueue_insert(pq, chptr1, 12);
     printentry(pq);
 
-    printf("\nnoch mehr sind eingefügt worden:\n");
+    printf("\nnoch mehr sind eingefÃ¼gt worden:\n");
     pqueue_insert(pq, chptr2, 5);
     pqueue_insert(pq, chptr3, 40000);
     pqueue_insert(pq, chptr4, 21);
